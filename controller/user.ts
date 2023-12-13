@@ -46,15 +46,17 @@ const registerUser = async (req: Request, res: Response) => {
 
 const loginUser = async (req: Request, res: Response) => {
   try {
-    const { mobile } = req.body;
+    const { mobileNo } = req.body;
+    if (!mobileNo)
+      return res.status(400).json({ message: "mobile number is required" });
     const isUserExsist = await User.find({
-      mobile,
+      mobile: mobileNo,
     });
     console.log(isUserExsist);
     if (isUserExsist.length === 0) {
       return res.status(200).json({
-        newUser: true,
-        mobile,
+        mobileNo,
+        message: "register",
       });
     } else {
       return res.status(200).json({
