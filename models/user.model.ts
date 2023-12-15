@@ -9,6 +9,7 @@ const UserSchema = new Schema<Userdocument>(
       required: true,
     },
     password: String,
+    confirm_password: String,
     gender: String,
     another_mobile: Number,
     mobile: {
@@ -31,6 +32,7 @@ export default User;
 interface Userdocument extends mongoose.Document {
   name: string;
   password: string;
+  confirm_password: string;
   email: string;
   gender: string;
   mobile: number;

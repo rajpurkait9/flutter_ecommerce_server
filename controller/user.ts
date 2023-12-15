@@ -60,7 +60,8 @@ const loginUser = async (req: Request, res: Response) => {
       });
     } else {
       return res.status(200).json({
-        message: "sale ko registration wale page pe beh",
+        user: isUserExsist,
+        message: "Welcome back to the app",
       });
     }
   } catch (error: any) {
